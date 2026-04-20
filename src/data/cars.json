@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "make": "Lexus",
+    "model": "570",
+    "category": "SUV",
+    "price_per_day": 12000,
+    "images": [
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721279/1_dftzwj.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721279/68d2434a7b13f_wdkrva.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721279/68d2434a7b864_zabv6b.jpg"
+    ],
+    "specs": {
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol"
+    },
+    "available": true
+  },
+  {
+    "id": "2",
+    "make": "Toyota",
+    "model": "Prado",
+    "category": "SUV",
+    "price_per_day": 15000,
+    "images": [
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721211/toyota_prado_j150_xtskxt.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721210/68ce863d47515_hskuvs.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721210/68ce863d4733a_mbuxec.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721188/IMG-20240118-WA0001-900x600_ngznic.jpg"
+    ],
+    "specs": {
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol"
+    },
+    "available": true
+  },
+  {
+    "id": "3",
+    "make": "Nissan",
+    "model": "X-Trail",
+    "category": "SUV",
+    "price_per_day": 8000,
+    "images": [
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721260/WhatsApp-Image-2023-05-06-at-13.57.23-1-900x600_r57egh.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721261/WhatsApp-Image-2023-05-06-at-13.57.25-2-900x600_thi0h7.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721260/WhatsApp-Image-2023-05-06-at-13.57.23-900x600_p8nx29.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721261/WhatsApp-Image-2023-05-06-at-13.57.24-1-900x600_zzbkk5.jpg"
+    ],
+    "specs": {
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol"
+    },
+    "available": true
+  },
+  {
+    "id": "4",
+    "make": "Toyota",
+    "model": "Noah",
+    "category": "Minivan",
+    "price_per_day": 8000,
+    "images": [
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721232/68d136cdc887f_uyt1yi.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721231/68d136cdc8fb5_ju4lj5.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721231/68d136cdc8d24_zuyehu.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721231/68d136cdc8b8b_nowld4.jpg"
+    ],
+    "specs": {
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol"
+    },
+    "available": true
+  }
+]
