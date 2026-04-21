@@ -26,8 +26,7 @@
     "images": [
       "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721211/toyota_prado_j150_xtskxt.jpg",
       "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721210/68ce863d47515_hskuvs.jpg",
-      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721210/68ce863d4733a_mbuxec.jpg",
-      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721188/IMG-20240118-WA0001-900x600_ngznic.jpg"
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721210/68ce863d4733a_mbuxec.jpg"
     ],
     "specs": {
       "seats": 5,
@@ -38,6 +37,25 @@
   },
   {
     "id": "3",
+    "make": "Toyota",
+    "model": "axio",
+    "category": "Sedan",
+    "price_per_day": 5000,
+    "images": [
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721188/IMG-20240118-WA0000-900x600_itoxtg.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721188/IMG-20240118-WA0001-900x600_ngznic.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721187/IMG-20240118-WA0010-900x600_zrimev.jpg",
+      "https://res.cloudinary.com/dpyqxho1q/image/upload/v1776721188/IMG-20240118-WA0004-900x600_wwfkca.jpg"
+    ],
+    "specs": {
+      "seats": 5,
+      "transmission": "Automatic",
+      "fuel_type": "Petrol"
+    },
+    "available": true
+  },
+  {
+    "id": "4",
     "make": "Nissan",
     "model": "X-Trail",
     "category": "SUV",
@@ -56,7 +74,7 @@
     "available": true
   },
   {
-    "id": "4",
+    "id": "5",
     "make": "Toyota",
     "model": "Noah",
     "category": "Minivan",

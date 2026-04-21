@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export interface Car {
@@ -17,120 +16,159 @@ export interface Car {
 }
 
 export default function CarCard({ car }: { car: Car }) {
-  // Format price exactly like Ksh.X,XXX.00
   const formattedPrice = `Ksh.${car.price_per_day.toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })}`;
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl bg-[#1c1c1c] shadow-lg border border-white/5 hover:border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300">
-      
-      {/* Top Image Section */}
-      <Link href={`/car/${car.id}`} className="relative aspect-[4/3] w-full block bg-black overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
+    <article
+      className="group flex flex-col overflow-hidden rounded-xl bg-[#1c1c1c] shadow-lg border border-white/5 hover:border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300"
+    >
+      {/* Image Section - 16:9 on mobile, 4:3 on larger screens */}
+      <Link
+        href={`/car/${car.id}`}
+        className="relative aspect-video sm:aspect-[4/3] w-full block bg-black overflow-hidden"
+        aria-label={`View details for ${car.make} ${car.model}`}
+      >
         <img
           src={car.images[0]}
-          alt={`${car.make} ${car.model}`}
-          className="h-full w-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-700 ease-out"
+          alt={`${car.make} ${car.model} - ${car.category}`}
+          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+          loading="lazy"
         />
-        
+
         {/* Availability Badge */}
-        <div className="absolute top-3 left-3 z-10">
-          <span className={`inline-flex items-center px-2.5 py-1 rounded-md backdrop-blur-md text-[10px] font-bold text-white tracking-widest uppercase shadow-lg ${
-            car.available ? 'bg-emerald-500/90 shadow-emerald-500/20' : 'bg-red-500/90 shadow-red-500/20'
-          }`}>
-            <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${car.available ? 'bg-white animate-pulse' : 'bg-white'}`}></span>
-            {car.available ? 'Available' : 'Booked'}
+        <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
+          <span
+            className={`inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 rounded backdrop-blur-md text-[9px] sm:text-[10px] font-bold text-white tracking-widest uppercase shadow-lg ${
+              car.available
+                ? "bg-emerald-500/90 shadow-emerald-500/20"
+                : "bg-red-500/90 shadow-red-500/20"
+            }`}
+          >
+            <span
+              className={`w-1.5 h-1.5 rounded-full mr-1 sm:mr-1.5 ${
+                car.available ? "bg-white animate-pulse" : "bg-white"
+              }`}
+              aria-hidden="true"
+            />
+            {car.available ? "Available" : "Booked"}
           </span>
         </div>
-
-        {/* Heart Icon Top Right */}
-        <button className="absolute top-3 right-3 p-1.5 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 hover:bg-black/60 hover:text-red-400 text-white transition-all z-10">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-        </button>
       </Link>
 
       {/* Content Section */}
-      <div className="flex flex-col p-5 flex-1 relative z-20 bg-[#1c1c1c]">
-        
-        {/* Header (Category & Title) */}
-        <div className="mb-4">
-          <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-500/80 block mb-1">
+      <div className="flex flex-col p-3 sm:p-5 flex-1 relative z-20 bg-[#1c1c1c]">
+        {/* Header */}
+        <div className="mb-3 sm:mb-4">
+          <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-emerald-500/80 block mb-0.5 sm:mb-1">
             {car.category}
           </span>
-          <h3 className="text-[18px] font-bold text-white tracking-wide group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
             {car.make} {car.model}
           </h3>
         </div>
 
-        {/* Specs Grid (4 boxes) */}
-        <div className="grid grid-cols-4 gap-2 mb-6">
-          {/* Seats */}
-          <div className="flex flex-col items-center justify-center py-2 px-1 rounded border border-gray-800 bg-[#222] group-hover:bg-[#2a2a2a] group-hover:border-gray-700 transition-colors">
-            <svg className="w-4 h-4 text-emerald-500/70 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        {/* Specs Grid - Simplified */}
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-800/50">
+            <svg
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500/70 mb-0.5 sm:mb-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+              />
             </svg>
-            <span className="text-[12px] text-white font-semibold leading-tight">{car.specs.seats}</span>
-            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Seats</span>
+            <span className="text-[10px] sm:text-[11px] text-white font-medium">{car.specs.seats} Seats</span>
           </div>
-          {/* Transmission */}
-          <div className="flex flex-col items-center justify-center py-2 px-1 rounded border border-gray-800 bg-[#222] group-hover:bg-[#2a2a2a] group-hover:border-gray-700 transition-colors">
-            <svg className="w-4 h-4 text-emerald-500/70 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+
+          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-800/50">
+            <svg
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500/70 mb-0.5 sm:mb-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
             </svg>
-            <span className="text-[12px] text-white font-semibold leading-tight capitalize">{car.specs.transmission === 'Automatic' ? 'Auto' : 'Manual'}</span>
-            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Trans</span>
+            <span className="text-[10px] sm:text-[11px] text-white font-medium">
+              {car.specs.transmission === "Automatic" ? "Auto" : "Manual"}
+            </span>
           </div>
-          {/* Doors */}
-          <div className="flex flex-col items-center justify-center py-2 px-1 rounded border border-gray-800 bg-[#222] group-hover:bg-[#2a2a2a] group-hover:border-gray-700 transition-colors">
-            <svg className="w-4 h-4 text-emerald-500/70 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 19V5a2 2 0 012-2h10a2 2 0 012 2v14M5 19h14M10 12h.01" />
+
+          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-800/50">
+            <svg
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500/70 mb-0.5 sm:mb-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+              />
             </svg>
-            <span className="text-[12px] text-white font-semibold leading-tight">4</span>
-            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Doors</span>
-          </div>
-          {/* Bags/Luggage */}
-          <div className="flex flex-col items-center justify-center py-2 px-1 rounded border border-gray-800 bg-[#222] group-hover:bg-[#2a2a2a] group-hover:border-gray-700 transition-colors">
-            <svg className="w-4 h-4 text-emerald-500/70 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-            </svg>
-            <span className="text-[12px] text-white font-semibold leading-tight">2</span>
-            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Bags</span>
+            <span className="text-[10px] sm:text-[11px] text-white font-medium">{car.specs.fuel_type}</span>
           </div>
         </div>
 
-        {/* Divider */}
-        <hr className="border-gray-800/80 mb-5" />
-
-        {/* Price Row */}
-        <div className="flex items-baseline mb-5">
-          <span className="text-2xl font-bold text-[#25D366] drop-shadow-sm">{formattedPrice}</span>
-          <span className="text-sm text-gray-400 ml-1 font-medium">/ day</span>
+        {/* Price */}
+        <div className="flex items-baseline mb-4 sm:mb-5">
+          <span className="text-xl sm:text-2xl font-bold text-[#25D366]">{formattedPrice}</span>
+          <span className="text-sm text-neutral-500 ml-1">/day</span>
         </div>
 
-        {/* Action Button */}
+        {/* CTA Button */}
         <div className="mt-auto">
-          <a 
-            href={car.available ? `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Godfrey Hire! I am interested in booking the ${car.make} ${car.model}. Could you provide more details?`)}` : '#'}
+          <a
+            href={
+              car.available
+                ? `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Godfrey Hire! I am interested in booking the ${car.make} ${car.model}. Could you provide more details?`)}`
+                : "#"
+            }
             target={car.available ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className={`flex items-center justify-center w-full py-3.5 rounded-xl font-bold text-[15px] shadow-lg transition-all duration-300 ${
-              car.available 
-                ? 'bg-[#25D366] text-white hover:bg-[#1ebd5b] hover:shadow-[#25D366]/30 hover:-translate-y-0.5' 
-                : 'bg-neutral-800 text-neutral-500 cursor-not-allowed pointer-events-none'
+            aria-disabled={!car.available}
+            className={`flex items-center justify-center w-full py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm shadow-lg transition-all duration-200 ${
+              car.available
+                ? "bg-[#25D366] text-white hover:bg-[#1ebd5b] hover:shadow-[#25D366]/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-[#1c1c1c]"
+                : "bg-neutral-800 text-neutral-500 cursor-not-allowed"
             }`}
           >
-            <svg className="w-4 h-4 mr-2.5 fill-current" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            <svg
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 fill-current"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
             </svg>
-            Book via WhatsApp
+            {car.available ? "Book via WhatsApp" : "Currently Booked"}
           </a>
         </div>
-
       </div>
-    </div>
+    </article>
   );
 }
