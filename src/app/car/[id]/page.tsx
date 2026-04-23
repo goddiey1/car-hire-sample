@@ -35,7 +35,7 @@ export default async function CarDetailsPage({
 
       <Link
         href="/"
-        className="inline-flex items-center text-sm font-medium text-neutral-400 hover:text-white transition-colors mb-4 sm:mb-8 focus:outline-none focus:text-white"
+        className="inline-flex items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors mb-4 sm:mb-8 focus:outline-none focus:text-neutral-900 dark:focus:text-white"
       >
         <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -62,50 +62,50 @@ export default async function CarDetailsPage({
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-2">
-            {car.make} <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-500">{car.model}</span>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight leading-tight mb-2">
+            {car.make} <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-800 dark:from-neutral-200 dark:to-neutral-500">{car.model}</span>
           </h1>
 
-          <div className="my-6 sm:my-8 pb-6 sm:pb-8 border-b border-white/10">
-            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#25D366]">{formattedPrice}</span>
-            <span className="text-sm sm:text-lg text-neutral-500 uppercase tracking-wider font-semibold ml-1 sm:ml-2">/ day</span>
+          <div className="my-6 sm:my-8 pb-6 sm:pb-8 border-b border-neutral-900/10 dark:border-white/10">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-emerald-600 dark:text-[#25D366]">{formattedPrice}</span>
+            <span className="text-sm sm:text-lg text-neutral-600 dark:text-neutral-500 uppercase tracking-wider font-semibold ml-1 sm:ml-2">/ day</span>
           </div>
 
           <div className="mb-6 sm:mb-10 flex-1">
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 tracking-tight">Key Specifications</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-4 sm:mb-6 tracking-tight">Key Specifications</h3>
             <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-center text-neutral-300">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center mr-3 sm:mr-4 ring-1 ring-white/10 flex-shrink-0">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <li className="flex items-center text-neutral-700 dark:text-neutral-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-900/5 dark:bg-white/5 flex items-center justify-center mr-3 sm:mr-4 ring-1 ring-neutral-900/10 dark:ring-white/10 flex-shrink-0">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 dark:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="block text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-0.5">Seats</span>
-                  <span className="font-medium text-white text-sm sm:text-base">{car.specs.seats} Persons</span>
+                  <span className="block text-[10px] sm:text-xs uppercase tracking-wider text-neutral-600 dark:text-neutral-500 font-semibold mb-0.5">Seats</span>
+                  <span className="font-medium text-neutral-900 dark:text-white text-sm sm:text-base">{car.specs.seats} Persons</span>
                 </div>
               </li>
-              <li className="flex items-center text-neutral-300">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center mr-3 sm:mr-4 ring-1 ring-white/10 flex-shrink-0">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <li className="flex items-center text-neutral-700 dark:text-neutral-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-900/5 dark:bg-white/5 flex items-center justify-center mr-3 sm:mr-4 ring-1 ring-neutral-900/10 dark:ring-white/10 flex-shrink-0">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 dark:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="block text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-0.5">Transmission</span>
-                  <span className="font-medium text-white text-sm sm:text-base">{car.specs.transmission}</span>
+                  <span className="block text-[10px] sm:text-xs uppercase tracking-wider text-neutral-600 dark:text-neutral-500 font-semibold mb-0.5">Transmission</span>
+                  <span className="font-medium text-neutral-900 dark:text-white text-sm sm:text-base">{car.specs.transmission}</span>
                 </div>
               </li>
-              <li className="flex items-center text-neutral-300">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center mr-3 sm:mr-4 ring-1 ring-white/10 flex-shrink-0">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <li className="flex items-center text-neutral-700 dark:text-neutral-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-900/5 dark:bg-white/5 flex items-center justify-center mr-3 sm:mr-4 ring-1 ring-neutral-900/10 dark:ring-white/10 flex-shrink-0">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-500 dark:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                   </svg>
                 </div>
                 <div>
-                  <span className="block text-[10px] sm:text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-0.5">Fuel Type</span>
-                  <span className="font-medium text-white text-sm sm:text-base">{car.specs.fuel_type}</span>
+                  <span className="block text-[10px] sm:text-xs uppercase tracking-wider text-neutral-600 dark:text-neutral-500 font-semibold mb-0.5">Fuel Type</span>
+                  <span className="font-medium text-neutral-900 dark:text-white text-sm sm:text-base">{car.specs.fuel_type}</span>
                 </div>
               </li>
             </ul>
@@ -119,8 +119,8 @@ export default async function CarDetailsPage({
               rel="noopener noreferrer"
               className={`flex items-center justify-center w-full py-3.5 sm:py-5 px-4 sm:px-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg shadow-2xl transition-all duration-300 ${
                 car.available
-                  ? 'bg-[#25D366] text-white hover:bg-[#1ebd5b] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-neutral-950'
-                  : 'bg-neutral-800 text-neutral-500 cursor-not-allowed pointer-events-none'
+                  ? 'bg-[#25D366] text-white hover:bg-[#1ebd5b] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-[#daf1de] dark:focus:ring-offset-neutral-950'
+                  : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-500 cursor-not-allowed pointer-events-none'
               }`}
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 fill-current" viewBox="0 0 24 24">

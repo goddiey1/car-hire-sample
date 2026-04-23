@@ -13,7 +13,7 @@ export default function ImageGallery({ images, altPrefix, available }: ImageGall
 
   return (
     <>
-      <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-neutral-900 border border-white/10 shadow-2xl">
+      <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-900/10 dark:border-white/10 shadow-2xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={mainImage}
@@ -34,7 +34,7 @@ export default function ImageGallery({ images, altPrefix, available }: ImageGall
             <div
               key={index}
               onClick={() => setMainImage(img)}
-              className={`relative aspect-video w-24 sm:w-32 md:w-40 flex-shrink-0 snap-start overflow-hidden rounded-lg sm:rounded-xl bg-neutral-800 cursor-pointer transition-all duration-200 border-2 ${mainImage === img ? 'border-blue-500 shadow-lg shadow-blue-500/20 opacity-100' : 'border-white/10 hover:border-white/30 opacity-60 hover:opacity-100'}`}
+              className={`relative aspect-video w-24 sm:w-32 md:w-40 flex-shrink-0 snap-start overflow-hidden rounded-lg sm:rounded-xl bg-neutral-200 dark:bg-neutral-800 cursor-pointer transition-all duration-200 border-2 ${mainImage === img ? 'border-emerald-500 shadow-lg shadow-emerald-500/20 opacity-100' : 'border-neutral-900/10 dark:border-white/10 hover:border-neutral-900/30 dark:hover:border-white/30 opacity-60 hover:opacity-100'}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

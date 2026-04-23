@@ -23,12 +23,12 @@ export default function CarCard({ car }: { car: Car }) {
 
   return (
     <article
-      className="group flex flex-col overflow-hidden rounded-xl bg-[#1c1c1c] shadow-lg border border-white/5 hover:border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300"
+      className="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1c1c1c] shadow-lg border border-neutral-200 dark:border-white/5 hover:border-emerald-500/50 dark:hover:border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-1 transition-all duration-300"
     >
       {/* Image Section - 16:9 on mobile, 4:3 on larger screens */}
       <Link
         href={`/car/${car.id}`}
-        className="relative aspect-video sm:aspect-[4/3] w-full block bg-black overflow-hidden"
+        className="relative aspect-video sm:aspect-[4/3] w-full block bg-neutral-100 dark:bg-black overflow-hidden"
         aria-label={`View details for ${car.make} ${car.model}`}
       >
         <img
@@ -59,22 +59,22 @@ export default function CarCard({ car }: { car: Car }) {
       </Link>
 
       {/* Content Section */}
-      <div className="flex flex-col p-3 sm:p-5 flex-1 relative z-20 bg-[#1c1c1c]">
+      <div className="flex flex-col p-3 sm:p-5 flex-1 relative z-20 bg-white dark:bg-[#1c1c1c]">
         {/* Header */}
         <div className="mb-3 sm:mb-4">
-          <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-emerald-500/80 block mb-0.5 sm:mb-1">
+          <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-emerald-600 dark:text-emerald-500/80 block mb-0.5 sm:mb-1">
             {car.category}
           </span>
-          <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
             {car.make} {car.model}
           </h3>
         </div>
 
         {/* Specs Grid - Simplified */}
         <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-4 sm:mb-5">
-          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-800/50">
+          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-100 dark:bg-neutral-800/50">
             <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500/70 mb-0.5 sm:mb-1"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-500/70 mb-0.5 sm:mb-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -87,12 +87,12 @@ export default function CarCard({ car }: { car: Car }) {
                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span className="text-[10px] sm:text-[11px] text-white font-medium">{car.specs.seats} Seats</span>
+            <span className="text-[10px] sm:text-[11px] text-neutral-700 dark:text-white font-medium">{car.specs.seats} Seats</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-800/50">
+          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-100 dark:bg-neutral-800/50">
             <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500/70 mb-0.5 sm:mb-1"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-500/70 mb-0.5 sm:mb-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -111,14 +111,14 @@ export default function CarCard({ car }: { car: Car }) {
                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span className="text-[10px] sm:text-[11px] text-white font-medium">
+            <span className="text-[10px] sm:text-[11px] text-neutral-700 dark:text-white font-medium">
               {car.specs.transmission === "Automatic" ? "Auto" : "Manual"}
             </span>
           </div>
 
-          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-800/50">
+          <div className="flex flex-col items-center justify-center py-1.5 sm:py-2 px-1 rounded bg-neutral-100 dark:bg-neutral-800/50">
             <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500/70 mb-0.5 sm:mb-1"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-500/70 mb-0.5 sm:mb-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -131,14 +131,14 @@ export default function CarCard({ car }: { car: Car }) {
                 d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
               />
             </svg>
-            <span className="text-[10px] sm:text-[11px] text-white font-medium">{car.specs.fuel_type}</span>
+            <span className="text-[10px] sm:text-[11px] text-neutral-700 dark:text-white font-medium">{car.specs.fuel_type}</span>
           </div>
         </div>
 
         {/* Price */}
         <div className="flex items-baseline mb-4 sm:mb-5">
-          <span className="text-xl sm:text-2xl font-bold text-[#25D366]">{formattedPrice}</span>
-          <span className="text-sm text-neutral-500 ml-1">/day</span>
+          <span className="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-[#25D366]">{formattedPrice}</span>
+          <span className="text-sm text-neutral-600 dark:text-neutral-500 ml-1">/day</span>
         </div>
 
         {/* CTA Button */}
@@ -154,8 +154,8 @@ export default function CarCard({ car }: { car: Car }) {
             aria-disabled={!car.available}
             className={`flex items-center justify-center w-full py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm shadow-lg transition-all duration-200 ${
               car.available
-                ? "bg-[#25D366] text-white hover:bg-[#1ebd5b] hover:shadow-[#25D366]/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-[#1c1c1c]"
-                : "bg-neutral-800 text-neutral-500 cursor-not-allowed"
+                ? "bg-[#25D366] text-white hover:bg-[#1ebd5b] hover:shadow-[#25D366]/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#1c1c1c]"
+                : "bg-neutral-200 dark:bg-neutral-800 text-neutral-500 cursor-not-allowed"
             }`}
           >
             <svg

@@ -8,7 +8,7 @@ export default function Home() {
   const availableCount = cars.filter(c => c.available).length;
 
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-950 text-neutral-50">
+    <div className="flex flex-col min-h-screen">
 
       {/* 1. Hero Section - Optimized for clarity and conversion */}
       <section
@@ -79,10 +79,10 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <div className="mb-8 sm:mb-10 text-center sm:text-left">
-            <h2 id="fleet-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mb-2 sm:mb-3">
+            <h2 id="fleet-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white tracking-tight mb-2 sm:mb-3">
               Available Cars
             </h2>
-            <p className="text-neutral-400 text-base sm:text-lg">
+            <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-lg">
               {availableCount} vehicles ready for immediate booking. Tap any car to inquire.
             </p>
           </div>
@@ -97,13 +97,13 @@ export default function Home() {
 
       {/* 4. Why Choose Us - Simplified */}
       <section
-        className="py-12 sm:py-16 bg-neutral-900 border-y border-white/5"
+        className="py-12 sm:py-16 bg-[#c5e6cb]/50 dark:bg-neutral-900 border-y border-neutral-900/10 dark:border-white/5"
         aria-labelledby="why-heading"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 id="why-heading" className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">Why Choose Us</h2>
-            <p className="text-neutral-400 text-sm sm:text-base">Trusted by hundreds of clients in Nairobi</p>
+            <h2 id="why-heading" className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-2 sm:mb-3">Why Choose Us</h2>
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base">Trusted by hundreds of clients in Nairobi</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
@@ -129,15 +129,15 @@ export default function Home() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-neutral-950 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 hover:border-white/10 transition-colors"
+                className="bg-[#daf1de] dark:bg-neutral-950 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-neutral-900/10 dark:border-white/5 hover:border-neutral-900/20 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none"
               >
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-${item.color}-500/10 text-${item.color}-400 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4`}>
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-${item.color}-500/10 text-${item.color}-600 dark:text-${item.color}-400 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4`}>
                   <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                   </svg>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">{item.title}</h3>
-                <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-1 sm:mb-2">{item.title}</h3>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -151,8 +151,8 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 id="how-heading" className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">How It Works</h2>
-            <p className="text-neutral-400 text-sm sm:text-base">Three simple steps to get you on the road</p>
+            <h2 id="how-heading" className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-2 sm:mb-3">How It Works</h2>
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base">Three simple steps to get you on the road</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -168,12 +168,12 @@ export default function Home() {
                 <div key={index} className="relative flex flex-col items-center text-center">
                   <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mb-4 sm:mb-6 relative z-10 shadow-lg ${index === 1
                     ? 'bg-[#25D366] text-white shadow-[#25D366]/30'
-                    : 'bg-neutral-900 border-2 border-neutral-700 text-white'
+                    : 'bg-[#daf1de] dark:bg-neutral-900 border-2 border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white'
                     }`}>
                     {item.step}
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">{item.title}</h3>
-                  <p className="text-neutral-400 text-sm sm:text-base">{item.desc}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-1 sm:mb-2">{item.title}</h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -184,13 +184,13 @@ export default function Home() {
       {/* 6. Contact Section - Streamlined */}
       <section
         id="contact"
-        className="py-12 sm:py-16 bg-neutral-900 border-t border-white/5"
+        className="py-12 sm:py-16 bg-[#c5e6cb]/50 dark:bg-neutral-900 border-t border-neutral-900/10 dark:border-white/5"
         aria-labelledby="contact-heading"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 id="contact-heading" className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Ready to Book?</h2>
-            <p className="text-neutral-400 text-sm sm:text-base mb-6 sm:mb-8">
+            <h2 id="contact-heading" className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4">Ready to Book?</h2>
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base mb-6 sm:mb-8">
               Message us on WhatsApp for instant assistance. We typically respond within minutes.
             </p>
 
@@ -209,15 +209,15 @@ export default function Home() {
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-sm">
               <a
                 href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE}`}
-                className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors focus:outline-none focus:text-white"
+                className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors focus:outline-none focus:text-neutral-900 dark:focus:text-white"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 {process.env.NEXT_PUBLIC_CONTACT_PHONE}
               </a>
-              <span className="hidden sm:block text-neutral-600">|</span>
-              <span className="flex items-center gap-2 text-neutral-400">
+              <span className="hidden sm:block text-neutral-400 dark:text-neutral-600">|</span>
+              <span className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
