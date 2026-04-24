@@ -6,6 +6,8 @@ import CarCard, { Car } from "@/components/CarCard";
 export default function FleetSection({ cars }: { cars: Car[] }) {
   const [selectedBrand, setSelectedBrand] = useState("All brands");
   const [selectedCategory, setSelectedCategory] = useState("All categories");
+  const [appliedBrand, setAppliedBrand] = useState("All brands");
+  const [appliedCategory, setAppliedCategory] = useState("All categories");
 
   const brands = useMemo(
     () => Array.from(new Set(cars.map((car) => car.brand))).sort(),
@@ -20,14 +22,14 @@ export default function FleetSection({ cars }: { cars: Car[] }) {
   const filteredCars = useMemo(() => {
     return cars.filter((car) => {
       const matchesBrand =
-        selectedBrand === "All brands" || car.brand === selectedBrand;
+        appliedBrand === "All brands" || car.brand === appliedBrand;
       const matchesCategory =
-        selectedCategory === "All categories" ||
-        car.category === selectedCategory;
+        appliedCategory === "All categories" ||
+        car.category === appliedCategory;
 
       return matchesBrand && matchesCategory;
     });
-  }, [cars, selectedBrand, selectedCategory]);
+  }, [appliedBrand, appliedCategory, cars]);
 
   const availableCount = filteredCars.filter((car) => car.available).length;
 
@@ -72,16 +74,31 @@ export default function FleetSection({ cars }: { cars: Car[] }) {
               </select>
             </label>
 
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedBrand("All brands");
-                setSelectedCategory("All categories");
-              }}
-              className="inline-flex h-11 items-center justify-center rounded-lg border border-neutral-300 px-4 text-sm font-semibold text-neutral-700 transition hover:border-neutral-400 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
-            >
-              Reset
-            </button>
+            <div className="grid grid-cols-2 gap-2 md:min-w-[184px]">
+              <button
+                type="button"
+                onClick={() => {
+                  setAppliedBrand(selectedBrand);
+                  setAppliedCategory(selectedCategory);
+                }}
+                className="inline-flex h-11 items-center justify-center rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+              >
+                Search
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedBrand("All brands");
+                  setSelectedCategory("All categories");
+                  setAppliedBrand("All brands");
+                  setAppliedCategory("All categories");
+                }}
+                className="inline-flex h-11 items-center justify-center rounded-lg border border-neutral-300 px-4 text-sm font-semibold text-neutral-700 transition hover:border-neutral-400 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              >
+                Reset
+              </button>
+            </div>
           </div>
         </div>
 
