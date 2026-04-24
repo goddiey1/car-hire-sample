@@ -1,11 +1,11 @@
 import carsData from "@/data/cars.json";
-import CarCard, { Car } from "@/components/CarCard";
+import { Car } from "@/components/CarCard";
+import FleetSection from "@/components/FleetSection";
 import TrustBanner from "@/components/TrustBanner";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Home() {
  const cars: Car[] = carsData as Car[];
- const availableCount = cars.filter(c => c.available).length;
 
  return (
  <div className="flex flex-col min-h-screen">
@@ -72,28 +72,7 @@ export default function Home() {
  <TrustBanner />
 
  {/* 3. Available Cars - Grid */}
- <section
- id="fleet"
- className="py-12 sm:py-16 scroll-mt-16"
- aria-labelledby="fleet-heading"
- >
- <div className="container mx-auto px-4">
- <div className="mb-8 sm:mb-10 text-center sm:text-left">
- <h2 id="fleet-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight mb-2 sm:mb-3">
- Available Cars
- </h2>
- <p className="text-neutral-600 text-base sm:text-lg">
- {availableCount} vehicles ready for immediate booking. Tap any car to inquire.
- </p>
- </div>
-
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
- {cars.map((car) => (
- <CarCard key={car.id} car={car} />
- ))}
- </div>
- </div>
- </section>
+ <FleetSection cars={cars} />
 
  {/* 4. Why Choose Us - Simplified */}
  <section

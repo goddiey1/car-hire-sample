@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "make": "Lexus",
+    "brand": "Lexus",
     "model": "570",
     "category": "SUV",
     "price_per_day": 12000,
@@ -19,7 +19,7 @@
   },
   {
     "id": "2",
-    "make": "Toyota",
+    "brand": "Toyota",
     "model": "Prado",
     "category": "SUV",
     "price_per_day": 15000,
@@ -37,7 +37,7 @@
   },
   {
     "id": "3",
-    "make": "Toyota",
+    "brand": "Toyota",
     "model": "axio",
     "category": "Sedan",
     "price_per_day": 5000,
@@ -56,7 +56,7 @@
   },
   {
     "id": "4",
-    "make": "Nissan",
+    "brand": "Nissan",
     "model": "X-Trail",
     "category": "SUV",
     "price_per_day": 8000,
@@ -75,7 +75,7 @@
   },
   {
     "id": "5",
-    "make": "Toyota",
+    "brand": "Toyota",
     "model": "Noah",
     "category": "Minivan",
     "price_per_day": 8000,
