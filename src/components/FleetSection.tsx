@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CarCard, { Car } from "@/components/CarCard";
 
 export default function FleetSection({ cars }: { cars: Car[] }) {
@@ -8,6 +8,8 @@ export default function FleetSection({ cars }: { cars: Car[] }) {
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const [appliedBrand, setAppliedBrand] = useState("All brands");
   const [appliedCategory, setAppliedCategory] = useState("All categories");
+  const [shouldScrollToResults, setShouldScrollToResults] = useState(false);
+  const firstCardRef = useRef<HTMLDivElement | null>(null);
 
   const brands = useMemo(
     () => Array.from(new Set(cars.map((car) => car.brand))).sort(),
@@ -32,6 +34,21 @@ export default function FleetSection({ cars }: { cars: Car[] }) {
   }, [appliedBrand, appliedCategory, cars]);
 
   const availableCount = filteredCars.filter((car) => car.available).length;
+
+  useEffect(() => {
+    if (!shouldScrollToResults) {
+      return;
+    }
+
+    if (filteredCars.length > 0 && firstCardRef.current) {
+      firstCardRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    setShouldScrollToResults(false);
+  }, [filteredCars, shouldScrollToResults]);
 
   return (
     <section
@@ -80,6 +97,7 @@ export default function FleetSection({ cars }: { cars: Car[] }) {
                 onClick={() => {
                   setAppliedBrand(selectedBrand);
                   setAppliedCategory(selectedCategory);
+                  setShouldScrollToResults(true);
                 }}
                 className="inline-flex h-11 items-center justify-center rounded-lg bg-emerald-600 px-4 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
               >
@@ -117,8 +135,14 @@ export default function FleetSection({ cars }: { cars: Car[] }) {
 
         {filteredCars.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {filteredCars.map((car) => (
-              <CarCard key={car.id} car={car} />
+            {filteredCars.map((car, index) => (
+              <div
+                key={car.id}
+                ref={index === 0 ? firstCardRef : null}
+                className={index === 0 ? "scroll-mt-24 sm:scroll-mt-28" : undefined}
+              >
+                <CarCard car={car} />
+              </div>
             ))}
           </div>
         ) : (
