@@ -1,7 +1,22 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Bot, X, Send, Loader2 } from 'lucide-react';
+import { X, Send, Loader2 } from 'lucide-react';
+
+const AIIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Rounded Square */}
+    <rect x="2" y="5" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="2.5" />
+    {/* Letter A */}
+    <path d="M6 15L8.5 9L11 15M7 13H10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    {/* Letter I */}
+    <path d="M14 9V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    {/* Large Sparkle */}
+    <path d="M19 0C19 2.5 21 4 24 4C21 4 19 5.5 19 8C19 5.5 17 4 14 4C17 4 19 2.5 19 0Z" fill="currentColor" />
+    {/* Small Sparkle */}
+    <path d="M22.5 8C22.5 9 23.5 10 24.5 10C23.5 10 22.5 11 22.5 12C22.5 11 21.5 10 20.5 10C21.5 10 22.5 9 22.5 8Z" fill="currentColor" />
+  </svg>
+);
 
 type Message = {
   role: 'user' | 'ai';
@@ -11,7 +26,7 @@ type Message = {
 export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'ai', content: "Hello! I'm G-bot, your Godfrey Hire assistant. What kind of car are you looking for today?" }
+    { role: 'ai', content: "Hello! I'm G-AI, your Godfrey Hire assistant. What kind of car are you looking for today?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +54,7 @@ export default function ChatBox() {
       });
 
       const data = await response.json();
-      
+
       if (response.ok && data.reply) {
         setMessages(prev => [...prev, { role: 'ai', content: data.reply }]);
       } else {
@@ -61,10 +76,10 @@ export default function ChatBox() {
           {/* Header */}
           <div className="bg-emerald-600 text-white p-4 flex justify-between items-center shadow-sm z-10">
             <div>
-              <h3 className="font-bold text-lg leading-tight">G-bot</h3>
-              <p className="text-emerald-100 text-xs">Usually replies instantly</p>
+              <h3 className="font-bold text-lg leading-tight">G-AI</h3>
+              <p className="text-emerald-100 text-xs">INSTANT HELP</p>
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="text-emerald-100 hover:text-white transition-colors"
             >
@@ -75,13 +90,12 @@ export default function ChatBox() {
           {/* Messages Area */}
           <div className="flex-1 overflow-y-auto p-4 bg-neutral-50/50 flex flex-col gap-3">
             {messages.map((msg, idx) => (
-              <div 
-                key={idx} 
-                className={`max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed ${
-                  msg.role === 'user' 
-                    ? 'bg-emerald-600 text-white self-end rounded-tr-sm' 
-                    : 'bg-white border border-neutral-200 text-neutral-800 self-start rounded-tl-sm shadow-sm'
-                }`}
+              <div
+                key={idx}
+                className={`max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed ${msg.role === 'user'
+                  ? 'bg-emerald-600 text-white self-end rounded-tr-sm'
+                  : 'bg-white border border-neutral-200 text-neutral-800 self-start rounded-tl-sm shadow-sm'
+                  }`}
               >
                 {/* Basic markdown-like rendering for bold text and lists */}
                 {msg.content.split('\\n').map((line, i) => (
@@ -126,7 +140,7 @@ export default function ChatBox() {
         className={`${isOpen ? 'bg-neutral-800' : 'bg-emerald-600 hover:bg-emerald-700 hover:scale-105'} text-white p-4 rounded-full shadow-xl transition-all duration-300 flex items-center justify-center`}
         aria-label="Toggle Chat"
       >
-        {isOpen ? <X size={24} /> : <Bot size={24} />}
+        {isOpen ? <X size={24} /> : <AIIcon size={24} />}
       </button>
     </div>
   );
