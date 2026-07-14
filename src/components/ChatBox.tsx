@@ -97,12 +97,16 @@ export default function ChatBox() {
                   : 'bg-white border border-neutral-200 text-neutral-800 self-start rounded-tl-sm shadow-sm'
                   }`}
               >
-                {/* Basic markdown-like rendering for bold text and lists */}
-                {msg.content.split('\\n').map((line, i) => (
-                  <p key={i} className="mb-1 last:mb-0">
-                    {line.replace(/\\*\\*(.*?)\\*\\*/g, '$1')} {/* Strip bold markdown for simple rendering */}
-                  </p>
-                ))}
+                {/* Improved markdown-like rendering for bold text and lists */}
+                <div 
+                  className="whitespace-pre-wrap font-sans"
+                  dangerouslySetInnerHTML={{ 
+                    __html: msg.content
+                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                      .replace(/\n/g, '<br />')
+                      .replace(/(?:^|<br \/>)\*\s/g, '$1• ') 
+                  }} 
+                />
               </div>
             ))}
             {isLoading && (
