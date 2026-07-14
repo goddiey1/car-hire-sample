@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { Bot, X, Send, Loader2 } from 'lucide-react';
 
 type Message = {
   role: 'user' | 'ai';
@@ -11,7 +11,7 @@ type Message = {
 export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'ai', content: 'Hello! Welcome to Godfrey Hire. What kind of car are you looking for today?' }
+    { role: 'ai', content: "Hello! I'm G-bot, your Godfrey Hire assistant. What kind of car are you looking for today?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +61,7 @@ export default function ChatBox() {
           {/* Header */}
           <div className="bg-emerald-600 text-white p-4 flex justify-between items-center shadow-sm z-10">
             <div>
-              <h3 className="font-bold text-lg leading-tight">Godfrey Hire Assistant</h3>
+              <h3 className="font-bold text-lg leading-tight">G-bot</h3>
               <p className="text-emerald-100 text-xs">Usually replies instantly</p>
             </div>
             <button 
@@ -126,7 +126,7 @@ export default function ChatBox() {
         className={`${isOpen ? 'bg-neutral-800' : 'bg-emerald-600 hover:bg-emerald-700 hover:scale-105'} text-white p-4 rounded-full shadow-xl transition-all duration-300 flex items-center justify-center`}
         aria-label="Toggle Chat"
       >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <X size={24} /> : <Bot size={24} />}
       </button>
     </div>
   );
