@@ -104,7 +104,7 @@ export default function ChatBox() {
                     __html: msg.content
                       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                       .replace(/\n/g, '<br />')
-                      .replace(/(?:^|<br \/>)\*\s/g, '$1• ') 
+                      .replace(/(^|<br \/>)\s*[\*\-]\s/g, '$1• ') 
                   }} 
                 />
               </div>
